@@ -1,2 +1,3 @@
 belajar git di line 1 (perubahan fitur 2)
+belajar git di line 1 (ini perubahan fitur 1)
 belajar git di line 2
