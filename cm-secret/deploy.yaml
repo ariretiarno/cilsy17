@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        env:
+          - name: rahasia-ari
+            valueFrom:
+              secretKeyRef:
+                key: rahasia
+                name: rahasia-ari-2
+        volumeMounts:
+          - mountPath: /var/www/html/config.php
+            name: configmap-ari
+            subPath: config.php
+      volumes:
+      - name: configmap-ari
+        configMap:
+          name: p-fb-configmap
