@@ -2,9 +2,9 @@ version: '3.6'
 services:
   database:
     container_name: cilist-db
-    image: ariretiarno/cilist-db:${GIT_COMMIT_SHORT}
+    image: ariretiarno/db-cilist:${GIT_COMMIT_SHORT}
   backend:
-    image: profesorgreen36/cilist-be:${GIT_COMMIT_SHORT}
+    image: ariretiarno/backend-cilist:${GIT_COMMIT_SHORT}
     ports:
     - "5000:5000"
     depends_on:
@@ -18,7 +18,7 @@ services:
     - DATABASE_HOST=database
     - DATABASE_PORT=3306
   frontend:
-    image: profesorgreen36/cilist-fe:${GIT_COMMIT_SHORT}
+    image: ariretiarno/frontend-cilist:${GIT_COMMIT_SHORT}
     ports:
     - "3000:3000"
     environment:
