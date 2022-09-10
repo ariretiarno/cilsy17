@@ -1,5 +1,5 @@
 pipeline {
-    agent {label = 'ec2-spot'}
+    agent {label 'ec2-spot'}
     
     environment {
         GIT_COMMIT_SHORT = sh(returnStdout: true, script: '''echo $GIT_COMMIT | head -c 7''')
